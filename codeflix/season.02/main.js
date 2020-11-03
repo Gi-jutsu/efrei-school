@@ -18,7 +18,8 @@ console.log('----- Streambox')
 // streambox
 duplicate('main.js')
 transform(
-  'eventbox.js', // filename
-  /[a-z]/g,      // re ( RegExp -> Regular expression )
-  (letter) => letter.toUpperCase(), // fn -> function
+  'eventbox.js',
+  /[a-z]/g,
+  (letter) => letter.toUpperCase(),
+    false
 )

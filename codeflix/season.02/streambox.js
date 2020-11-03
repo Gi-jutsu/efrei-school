@@ -22,9 +22,17 @@ function transform(filename, re, fn, in_stdout = true) {
 
   const readStream = fs.createReadStream(filename)
   
-  readStream
-    .pipe(transformer)
-    .pipe(process.stdout)
+  if (in_stdout) {
+    readStream
+      .pipe(transformer)
+      .pipe(process.stdout)
+  } else {
+    const writeStream = fs.createWriteStream('./output.txt')
+
+    readStream
+      .pipe(transformer)
+      .pipe(writeStream)
+  }
 }
 
 module.exports = {
